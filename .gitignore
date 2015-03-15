@@ -1,0 +1,6 @@
+*.pem
+*.pyc
+logs
+public
+fabconfig.py
+local.py

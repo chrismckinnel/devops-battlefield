@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1>Profile</h1>
+
+<ul>
+    <li>{{ object.id }}</li>
+    <li>{{ object.username }}</li>
+    <li>{{ object.first_name }}</li>
+    <li>{{ object.last_name }}</li>
+    <li>{{ object.email }}</li>
+</ul>
+
+<form name="create-instance" method="post" action="{% url 'create_instance' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ object.id }}" />
+    <button class="create-instance">Create me an instance</button>
+</form>
+<p class="message"></p>
+{% endblock %}
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
